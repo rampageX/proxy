@@ -104,8 +104,9 @@ func (p Proxy) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dns.Msg) (
 
 				// Check if the reply is correct; if not return FormErr.
 				if !state.Match(reply) {
-//					formerr := state.ErrorMessage(dns.RcodeFormatError)
-//					w.WriteMsg(formerr)
+                    formerr := new(dns.Msg)
+                    formerr.SetRcode(state.Req, dns.RcodeFormatError)
+					w.WriteMsg(formerr)
 					return 0, taperr
 				}
 
