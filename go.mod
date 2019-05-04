@@ -1,4 +1,4 @@
-module github.com/coredns/proxy
+module github.com/rampageX/proxy
 
 go 1.12
 
